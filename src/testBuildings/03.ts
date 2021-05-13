@@ -1,4 +1,3 @@
-import {city} from "./03.test";
 
 type SteetNameType = {
     title: string
@@ -24,6 +23,8 @@ export type CityType = {
     title: string
     houses: Array<HomeBuildingType>
     govermentBuildings: Array<GovermentBuildingType>
+    citizensNumber: number
+
 }
 
 export function addMoneyBudjet(bulding: GovermentBuildingType, sum: number) {
