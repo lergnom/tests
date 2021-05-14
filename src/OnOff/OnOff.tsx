@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import UncontrollerAccordion from "./UncontrollerAccordion";
 
+
 type PropsType = {
     on: boolean
 }
@@ -35,7 +36,7 @@ function OnOff() {
 
     }
     return <div>
-        <div style={onStyle} onClick={() => {
+        <div  style={onStyle} onClick={() => {
             setOn(true)
         }}>On
         </div>
