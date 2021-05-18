@@ -5,14 +5,17 @@ type RatingPropsType = {
 }
 
 export function Rating(props: RatingPropsType) {
+    const starBlock = {
+        display: "block"
+    }
     return (
-        <>
-            <Star selected={props.value > 1}/>
+        <div style={starBlock}>
+            <Star  selected={props.value > 1}/>
             <Star selected={props.value > 2}/>
             <Star selected={props.value > 3}/>
             <Star selected={props.value > 4}/>
             <Star selected={props.value > 5}/>
-        </>
+        </div>
     )
 }
 
@@ -21,9 +24,10 @@ type StarTypeProps = {
 }
 
 function Star(props: StarTypeProps) {
+
     return (
         <>
-            <span>{props.selected ? <b>star </b> : 'star '}</span>
+            <span >{props.selected ? <b>star </b> : 'star '}</span>
         </>
     )
 }
