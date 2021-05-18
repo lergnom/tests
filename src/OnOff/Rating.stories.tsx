@@ -6,7 +6,7 @@ import {UncontrollerRating} from "./UncontrollerRating";
 
 export default {
     title: 'Rating',
-    component: UncontrollerRating,
+    component: UncontrollerRating, Rating
 };
 export const EmptyStars = () => <Rating value={0}/>
 export const RatingStars1 = () => <Rating value={1}/>

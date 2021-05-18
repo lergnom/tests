@@ -47,7 +47,7 @@ function ContOnOff(props: PropsType) {
         }}>Off
         </div>
         <div style={indicatorStyle}></div>
-        <UncontrollerAccordion/>
+        {/*<UncontrollerAccordion/>*/}
     </div>
 }
 
