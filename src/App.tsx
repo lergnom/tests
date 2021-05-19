@@ -10,12 +10,10 @@ function App() {
 
     return (
         <div>
-            <ContOnOff on={on} setOn={(on) => {
-                setOn(on)
-            }}/>
+            {/*<ContOnOff on={on} setOn={(on) => {         setOn(on)          }}/>*/}
             {/*<OnOff/>*/}
-            <UncontrollerRating/>
-
+            {/*<UncontrollerRating/>*/}
+[hty
         </div>
 
 
