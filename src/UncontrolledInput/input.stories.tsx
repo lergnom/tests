@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {ChangeEvent, ChangeEventHandler, useRef, useState} from 'react';
 import {Story, Meta} from '@storybook/react';
 
 
@@ -65,6 +65,39 @@ export const GetValueofControlledInputByButtonpress = () => {
         </>
     )
 
+}
+
+export const ControlldeInput = () => {
+    const [parentValue, setParentValue] = useState("")
+    const onchange = (e: ChangeEvent<HTMLInputElement>) => {
+        setParentValue(e.currentTarget.value)
+    }
+
+
+    return <input value={parentValue} onChange={onchange}/>
+}
+
+
+export const ControlldeCheckBox = () => {
+    const [parentValue, setParentValue] = useState(true)
+    const onchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setParentValue(e.currentTarget.checked)
+    }
+    return <input type="checkbox" checked={parentValue} onChange={onchange}/>
+}
+
+
+export const ControlldeSelect = () => {
+    const [parentValue, setParentValue] = useState<string | undefined>("2")
+    const onchange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setParentValue(e.currentTarget.value)
+    }
+    return <select value={parentValue} onChange={onchange}>
+        <option> none</option>
+        <option value={"1"}>Apatity</option>
+        <option value={"2"}>Kirovsk</option>
+        <option value={"3"}>Murmansk</option>
+    </select>
 }
 
 
