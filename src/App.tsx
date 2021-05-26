@@ -4,6 +4,7 @@ import './App.css';
 import {Rating} from './OnOff/Rating';
 import {UncontrollerRating} from "./OnOff/UncontrollerRating";
 import ContOnOff from "./OnOff/ContrOnOff";
+import {Accordion} from "./Accordion/Accordion";
 
 function App() {
     let [on, setOn] = useState(true)
@@ -13,7 +14,7 @@ function App() {
             {/*<ContOnOff on={on} setOn={(on) => {         setOn(on)          }}/>*/}
             {/*<OnOff/>*/}
             {/*<UncontrollerRating/>*/}
-[hty
+            {/*<Accordion titleValue={'a'} collapsed={true} onChange={}/>*/}
         </div>
 
 
