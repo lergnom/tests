@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {action} from "@storybook/addon-actions"
 import {Select} from "./Select";
 
+
 export default {
     title: 'Select',
     component: Select
@@ -18,13 +19,25 @@ export default {
 
 export const SelectChanging = () => {
     const [collapsed, setCollapsed] = useState<boolean>(true)
-    return <Select collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
-        value: 2,
-        title: 'Pskov'
-    }, {value: 3, title: "Spb"}]} value={'Moskow'} onChange={() => {
-        // setValue(!collapsed)
-    }} onClick={() => {
-        setCollapsed(!collapsed)
-    }}/>
+    const [value, setValue] = useState<string>('none')
+    return (
+        <>
+            <Select collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
+                value: 2,
+                title: 'Pskov'
+            }, {value: 3, title: "Spb"}]} value={value} onChange={() => {
+            }} onClick={() => {
+                setCollapsed(!collapsed)
+            }} onClickItem={(e) => {
+                if (e.currentTarget.textContent) {
+                    setValue(e.currentTarget.textContent)
+                }
+                setCollapsed(!collapsed)
+            }}/>
+        </>
+
+
+    )
+
 }
 
