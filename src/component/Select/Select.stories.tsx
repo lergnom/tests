@@ -16,16 +16,17 @@ export default {
 //     title: 'Pskov'
 // }, {value: 3, title: "Spb"}]}/>
 
+const callback = action("select action");
 
 export const SelectChanging = () => {
     const [collapsed, setCollapsed] = useState<boolean>(true)
-    const [value, setValue] = useState<string>('none')
+    const [value, setValue] = useState<string>('Minsk')
     return (
         <>
             <Select collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
                 value: 2,
                 title: 'Pskov'
-            }, {value: 3, title: "Spb"}]} value={value} onChange={() => {
+            }, {value: 3, title: "Spb"}, {value: 4, title: "Minsk"}]} value={value} onChange={() => {
             }} onClick={() => {
                 setCollapsed(!collapsed)
             }} onClickItem={(e) => {
@@ -33,6 +34,7 @@ export const SelectChanging = () => {
                     setValue(e.currentTarget.textContent)
                 }
                 setCollapsed(!collapsed)
+                callback()
             }}/>
         </>
 

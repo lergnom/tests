@@ -1,8 +1,23 @@
 .main {
     cursor: pointer;
+    width: 80px;
+    border: #282c34 solid 1px;
+    padding: 5px;
+}
+
+.item {
+    margin-top: 5px;
+    width: 60px;
+    border: #282c34 solid 1px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: yellowgreen;
 }
 
 .item:hover {
     opacity: 0.5;
     color: blue;
+    background-color: whitesmoke;
+
+
 }
