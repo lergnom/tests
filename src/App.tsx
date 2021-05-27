@@ -5,7 +5,7 @@ import {Rating} from './OnOff/Rating';
 import {UncontrollerRating} from "./OnOff/UncontrollerRating";
 import ContOnOff from "./OnOff/ContrOnOff";
 import {Accordion} from "./Accordion/Accordion";
-import {Select} from "./component/Select/Select";
+import {MySelect} from "./component/Select/MySelect";
 
 function App() {
     let [on, setOn] = useState(true)
@@ -19,7 +19,7 @@ function App() {
             {/*<OnOff/>*/}
             {/*<UncontrollerRating/>*/}
             {/*<Accordion titleValue={'a'} collapsed={true} onChange={}/>*/}
-            <Select collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
+            <MySelect collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
                 value: 2,
                 title: 'Pskov'
             }, {value: 3, title: "Spb"}]} value={value} onChange={() => {

@@ -1,5 +1,5 @@
 import React, {MouseEventHandler} from "react";
-import s from './Select.module.css'
+import s from './MySelect.module.css'
 
 type ItemsType = {
     title: string
@@ -16,7 +16,7 @@ type SelectPropsType = {
 }
 
 
-export function Select({items, value, onChange, collapsed, onClick, onClickItem}: SelectPropsType) {
+export function MySelect({items, value, onChange, collapsed, onClick, onClickItem}: SelectPropsType) {
     return (
         <div className={s.main}>
             <div onChange={onChange} onClick={onClick}>{value}</div>

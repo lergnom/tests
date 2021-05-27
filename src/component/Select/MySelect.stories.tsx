@@ -1,29 +1,22 @@
 import React, {useState} from "react";
 import {action} from "@storybook/addon-actions"
-import {Select} from "./Select";
+import {MySelect} from "./MySelect";
 
 
 export default {
     title: 'Select',
-    component: Select
+    component: MySelect
 }
 
 
-// const callback = action("Accordion mode change event fired");
-// const callbackSome = action("Some item was click");
-// export const SelectComponent = () => <Select value={'Mos'} onChange={callback} items={[{value: 1, title: 'Apatity'}, {
-//     value: 2,
-//     title: 'Pskov'
-// }, {value: 3, title: "Spb"}]}/>
-
 const callback = action("select action");
 
-export const SelectChanging = () => {
+export const MySelectChanging = () => {
     const [collapsed, setCollapsed] = useState<boolean>(true)
     const [value, setValue] = useState<string>('Minsk')
     return (
         <>
-            <Select collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
+            <MySelect collapsed={collapsed} items={[{value: 1, title: 'Apatity'}, {
                 value: 2,
                 title: 'Pskov'
             }, {value: 3, title: "Spb"}, {value: 4, title: "Minsk"}]} value={value} onChange={() => {
