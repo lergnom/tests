@@ -12,6 +12,12 @@
     border: 1px solid black;
 }
 
+.item.selected {
+    background-color: blue;
+    color: white;
+
+}
+
 .select.active .items {
     display: block;
 }
