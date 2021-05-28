@@ -21,6 +21,9 @@ export type UserWithBooksType = UserType & {
     books: string[]
 }
 
+export type  WithCompaniesType = {
+    company: Array<{ id: number, title: string }>
+}
 
 export function makeHairStyle(u: UserType, power: number) {
     //masthave
@@ -72,9 +75,20 @@ export function addNewBooks(u: UserWithBooksType & UserWithLaptopType, books: st
 
 
 export function updateBook(u: UserWithBooksType & UserWithLaptopType, book: string, upBook: string) {
-    const copy = {
+    return {
         ...u,
         books: u.books.map(b => b === book ? upBook : b)
     }
-    return copy
+}
+
+
+export const removeBook = (u: UserWithBooksType & UserWithLaptopType, book: string) => ({
+    ...u,
+    books: u.books.filter(b => b !== book ? b : '')
+})
+
+
+export function getNewJob(u: UserWithLaptopType & UserWithBooksType & WithCompaniesType, company: string) {
+    // const newObj = {id: 3, company: company}
+    return {...u, company: [...u.company, {id: u.company.length + 1, company}]}
 }

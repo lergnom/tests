@@ -1,12 +1,12 @@
 import {
     addNewBook,
-    addNewBooks,
-    makeHairStyle, moveUserInNewHouse,
+    addNewBooks, getNewJob,
+    makeHairStyle, moveUserInNewHouse, removeBook,
     setNewAddress, updateBook,
     updateLaptop,
     UserType,
     UserWithBooksType,
-    UserWithLaptopType
+    UserWithLaptopType, WithCompaniesType
 } from "./Immutabelnost";
 
 test('referense type test', () => {
@@ -126,7 +126,7 @@ test('add new books', () => {
     }
 
 
-    const otherUser = addNewBooks(user, ['ts','React'])
+    const otherUser = addNewBooks(user, ['ts', 'React'])
 
     expect(otherUser).not.toBe(user)
     expect(otherUser.laptop.title).toBe('Dell')
@@ -152,7 +152,7 @@ test('update book', () => {
     }
 
 
-    const otherUser = updateBook(user, 'REACT','Redux')
+    const otherUser = updateBook(user, 'REACT', 'Redux')
 
     expect(otherUser).not.toBe(user)
     expect(otherUser.laptop.title).toBe('Dell')
@@ -160,5 +160,55 @@ test('update book', () => {
     expect(otherUser.books).not.toBe(user.books)
     expect(otherUser.books[2]).toBe('Redux')
 
+
+})
+
+test('remove book Pinokio', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT']
+    }
+
+
+    const otherUser = removeBook(user, 'Pinokio')
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.books).not.toBe(user.books)
+    expect(otherUser.books.length).toBe(2)
+
+})
+
+
+test('remove book Pinokio', () => {
+    let user: UserWithLaptopType & UserWithBooksType & WithCompaniesType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT'],
+        company: [{id: 1, title: "KSC"},
+            {id: 2, title: 'OOO'}]
+    }
+
+
+    const otherUser = getNewJob(user, 'Google')
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.books).toBe(user.books)
+    expect(otherUser.company.length).toBe(3)
+    expect(otherUser.company[2].id).toBe(3)
 
 })
