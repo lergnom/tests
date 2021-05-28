@@ -92,3 +92,8 @@ export function getNewJob(u: UserWithLaptopType & UserWithBooksType & WithCompan
     // const newObj = {id: 3, company: company}
     return {...u, company: [...u.company, {id: u.company.length + 1, company}]}
 }
+
+
+export const updateCompany = (u: UserWithLaptopType & UserWithBooksType & WithCompaniesType, id: number, newCompany: string) => ({
+    ...u, company: u.company.map(cm => cm.id === id ? {...cm, title: newCompany} : cm)
+})

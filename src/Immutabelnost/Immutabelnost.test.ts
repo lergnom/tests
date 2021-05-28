@@ -2,7 +2,7 @@ import {
     addNewBook,
     addNewBooks, getNewJob,
     makeHairStyle, moveUserInNewHouse, removeBook,
-    setNewAddress, updateBook,
+    setNewAddress, updateBook, updateCompany,
     updateLaptop,
     UserType,
     UserWithBooksType,
@@ -187,7 +187,7 @@ test('remove book Pinokio', () => {
 })
 
 
-test('remove book Pinokio', () => {
+test('get new Job', () => {
     let user: UserWithLaptopType & UserWithBooksType & WithCompaniesType = {
         name: 'Dimych',
         hair: 32,
@@ -210,5 +210,30 @@ test('remove book Pinokio', () => {
     expect(otherUser.books).toBe(user.books)
     expect(otherUser.company.length).toBe(3)
     expect(otherUser.company[2].id).toBe(3)
+
+})
+
+test('update Company', () => {
+    let user: UserWithLaptopType & UserWithBooksType & WithCompaniesType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT'],
+        company: [{id: 1, title: "KSC"},
+            {id: 2, title: 'OOO'}]
+    }
+
+    const otherUser = updateCompany(user, 2, 'Google')
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.books).toBe(user.books)
+    expect(otherUser.company.length).toBe(2)
+    expect(otherUser.company[1].title).toBe('Google')
 
 })
