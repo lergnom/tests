@@ -1,4 +1,13 @@
-import {makeHairStyle, setNewAddress, UserType, UserWithLaptopType} from "./Immutabelnost";
+import {
+    addNewBook,
+    addNewBooks,
+    makeHairStyle, moveUserInNewHouse,
+    setNewAddress, updateBook,
+    updateLaptop,
+    UserType,
+    UserWithBooksType,
+    UserWithLaptopType
+} from "./Immutabelnost";
 
 test('referense type test', () => {
     let user: UserType = {
@@ -37,3 +46,119 @@ test('change adress test', () => {
     expect(otherUser.laptop).toBe(user.laptop)
 })
 
+test('upgrade laptop to Macbook', () => {
+    let user: UserWithLaptopType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'}
+    }
+
+
+    const otherUser = updateLaptop(user, 'Mac')
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.laptop.title).toBe('Mac')
+})
+
+test('usage books array', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT']
+    }
+
+
+    const otherUser = moveUserInNewHouse(user, 15)
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.address).not.toBe(user.address)
+    expect(otherUser.books).toBe(user.books)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address.house).toBe(15)
+
+})
+
+
+test('add new book', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT']
+    }
+
+
+    const otherUser = addNewBook(user, 'ts')
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.books).not.toBe(user.books)
+    expect(otherUser.books[3]).toBe('ts')
+
+
+})
+
+test('add new books', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT']
+    }
+
+
+    const otherUser = addNewBooks(user, ['ts','React'])
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.books).not.toBe(user.books)
+    expect(otherUser.books[3]).toBe('ts')
+    expect(otherUser.books[4]).toBe('React')
+
+
+})
+
+
+test('update book', () => {
+    let user: UserWithLaptopType & UserWithBooksType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            city: 'Minsk',
+            house: 12
+        },
+        laptop: {title: 'Dell'},
+        books: ['NorthBear', 'Pinokio', 'REACT']
+    }
+
+
+    const otherUser = updateBook(user, 'REACT','Redux')
+
+    expect(otherUser).not.toBe(user)
+    expect(otherUser.laptop.title).toBe('Dell')
+    expect(otherUser.address).toBe(user.address)
+    expect(otherUser.books).not.toBe(user.books)
+    expect(otherUser.books[2]).toBe('Redux')
+
+
+})
