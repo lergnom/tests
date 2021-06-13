@@ -36,6 +36,14 @@ export function calc(a: number, b: number, action: ActionType) {
 
 }
 
+type StudentType = {
+    name: string
+    age: number
+    isMar: boolean
+    friends: Array<string>
+}
 
 
-
+export function getCopyStudent(student: StudentType) {
+    return {...student}
+}
