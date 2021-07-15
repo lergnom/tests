@@ -1,7 +1,6 @@
 export function makeNegativ(num: number) {
     return num > 0 ? -num : num
 }
-
 export function humanCatsDogsYears(years: number) {
     if (years === 1) {
         return [1, 15, 15]
