@@ -8,7 +8,7 @@ export function solution(num: number) {
     }
     let int = String(num)
     if (int.length === 1) {
-        return        units
+        return units
         // if (num === 1) {
         //     return 'I'
         // }
@@ -21,3 +21,4 @@ export function solution(num: number) {
 
     }
 }
+
