@@ -17,7 +17,7 @@ test('Example test cases', () => {
     let ex7 = "C4t5 are 4m4z1ng."
     let ex8 = "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog"
 
-    // expect(sumInteger(ex1)).toBe(16)
+    expect(sumInteger(ex1)).toBe(16)
     expect(sumInteger(ex2)).toBe(3)
     expect(sumInteger(ex3)).toBe(5)
     expect(sumInteger(ex4)).toBe(1)
