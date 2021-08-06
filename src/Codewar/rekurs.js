@@ -112,3 +112,58 @@ function sumtoProgr(n) {
 console.log(sumTo(100))
 console.log(sumToRek(100))
 console.log(sumtoProgr(100))
+
+
+console.log("Fn = Fn-1 + Fn-2")
+function fibonchi(n){
+return n <= 1 ? n : fibonchi(n-1) + fibonchi(n-2)
+}
+
+console.log(fibonchi(7))
+
+function fib(n) {
+    let a = 1;
+    let b = 1;
+    for (let i = 3; i <= n; i++) {
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+console.log(fib(77))
+
+
+let listt = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+};
+
+function printList(list) {
+    let tmp = list
+    while (tmp){
+        console.log(tmp.value)
+        tmp=tmp.next
+    }
+}
+
+
+function  printListRek(list){
+    if (list !==null){
+        console.log(list.value)
+    }
+    list!== null && printListRek(list.next)
+}
+
+console.log(printList(listt))
+console.log(printListRek(listt))
