@@ -3,9 +3,9 @@ console.log("work with promis")
 
 function wait(sec) {
     return new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                resolve()
-            },sec)
+        setTimeout(() => {
+            resolve()
+        }, sec)
     })
 }
 
@@ -20,3 +20,17 @@ async function run() {
 }
 
 run()
+
+const findUserInDB = (id) => {
+    return new Promise((res, rej) => {
+        if (id === 1) {
+            res({name: 'Anton', action: 'Student'})
+        } else {
+            setTimeout(() => {
+                rej('No that user')
+            }, 5000)
+        }
+    })
+}
+
+console.log(findUserInDB(88))
