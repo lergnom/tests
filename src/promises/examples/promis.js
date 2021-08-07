@@ -33,4 +33,26 @@ const findUserInDB = (id) => {
     })
 }
 
-console.log(findUserInDB(88))
+const findUserInDbByDimych = (id) => {
+    const users = [{id: 1, name: "Anton", friend: 3}, {id: 2, name: "Masha", friend: 5}, {
+        id: 3,
+        name: "Kira",
+        friend: 30
+    },]
+    return new Promise((res, rej) => {
+
+        setTimeout(() => {
+            let user = users.find(u => u.id === id)
+            user !== null ? res(user) : rej('user not found')
+        }, randomIntFromInterval(500, 1500))
+
+    })
+}
+
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+
+// console.log(findUserInDB(88))
+console.log(findUserInDbByDimych(10))
