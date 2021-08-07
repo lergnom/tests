@@ -32,3 +32,9 @@ const axios = {
         return this._fake(url, data)
     }
 }
+
+const promise1 = axios.get('https://google.com/')
+
+promise1.then((data)=>{
+    console.log(data.data)
+})
