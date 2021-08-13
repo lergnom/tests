@@ -18,3 +18,7 @@ export const BaseExample = () => {
     </>
 
 }
+
+export const AnalogClockbyDimich = () => {
+    return <Clock analogMode={true}/>
+}

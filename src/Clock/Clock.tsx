@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import s from './Clock.module.css'
+import {AnalogClockbyDimich} from "./AnalogClockbyDimich";
 
 class CanvasComponent extends React.Component {
     componentDidMount() {
@@ -148,16 +148,31 @@ export const Clock: React.FC<PropsType> = (props) => {
     }, [])
 
 
+    let view
+
+    switch (props.analogMode) {
+        case true:
+            view = <AnalogClockbyDimich date={date}/>
+            break
+        case false:
+        default:
+            view = <>digital</>
+
+    }
+
+
     return <>
-        {!props.analogMode && <div className={s.digitalMode}>
+        {!props.analogMode && <div>
             <span>{getTwoStringFormat(date.getHours())}</span>
             :
             <span>{getTwoStringFormat(date.getMinutes())}</span>
             :
             <span>{getTwoStringFormat(date.getSeconds())} </span>
         </div>}
-        {props.analogMode && <CanvasComponent/>}
+        {/*{props.analogMode && <CanvasComponent/>}*/}
+        {view}
     </>
 
 
 }
+
