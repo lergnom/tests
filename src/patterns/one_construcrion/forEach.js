@@ -10,6 +10,11 @@ if (typeof Object.prototype.clone === 'undefined') {
     };
 }
 
+/**
+ * @param a,b
+ * @param cycle - is cycle
+ * @type {(superhero:string, name:string)=> string}
+ */
 
 for (i in man) {
     //При обходе циклом необходимо произвести фильтрацию от возможных методов prototype
