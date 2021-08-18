@@ -31,11 +31,16 @@ console.log(prom);
 //Если ответ резолв логика работы с промисом через then
 prom
     .then(result => {
-        console.log('then result = ', result);
+        console.log('result = ', result);
         return result + 20;
     })
     .then(result2 => {
         console.log('result2 = ', result2);
+        return result2+1
+    })
+    .then(result3 => {
+        console.log('result3 = ', result3)
+        console.log('typeof', typeof result3)
     });
 //для чего нужна цепочка then: 1) Для распределения какой-то логики (каждая функция в идеальном коде отвечает за что-то одно, соответственно если сложный результат можно разбить на несколько функций
 //                             2) Бывает следующий запрос необходимо сделать с результатом предыдущего...
