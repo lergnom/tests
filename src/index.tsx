@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {splitIntoWords} from "./01-hello-tests/01";
+import lesson11_3 from "./Promises/lessons11NJ";
 
 const sentense =  "Hello my friends!"
 
 console.log(splitIntoWords(sentense))
+
+lesson11_3();
 
 ReactDOM.render(
   <React.StrictMode>

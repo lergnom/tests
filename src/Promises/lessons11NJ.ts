@@ -1,17 +1,39 @@
 // 6) в файле lesson_3.ts реализовать методы get, post, put, delete через axios
 // Ответы можно выводить в консоль
-import axios from 'axios';
+import axios from 'axios'
 
-const configJSPHLD =  {
-    baseUrl: 'https://jsonplaceholder.typicode.com/'
-};
-const axiosInstance = axios.create()
+const lesson11_3 = () => {
+    console.log("lesson 11_3");
+
+    const configJSPHLD = {
+        baseURL: 'https://jsonplaceholder.typicode.com/'
+    };
+    const axiosInstance = axios.create(configJSPHLD)
+    const API = {
+        getPosts: () => {
+            return axiosInstance.get(`posts`).then(res => (res.data))
+        },
+
+    }
+    //@ts-ignore
+    let allPosts = [];
+    const postsData = API.getPosts().then(posts => {
+        let i = 0, max = posts.length;
+        for (; i < max; i += 1) {
+            allPosts.push(posts[i]);
+        }
+        //@ts-ignore
+        allPosts.map( post => {
+            console.log(post.title)
+        } )
+    })
 
 
 
 
+}
 
-
+export default lesson11_3
 
 //
 // import axios from 'axios';
