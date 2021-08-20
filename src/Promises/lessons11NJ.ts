@@ -75,6 +75,19 @@ const lesson11_3 = () => {
     API.deletePost(1)
         .then(res => console.log('POST DELETE', res))
 
+
+    const getPostById = async (id: number) => {
+        try {
+            return await API.getPost(id).then(post => {
+                throw 'error 404'
+                return post.data.title
+            })
+        } catch (err) {
+            console.log('error', err)
+        }
+    }
+
+    console.log('Get post by ID ', getPostById(50))
 }
 
 export default lesson11_3

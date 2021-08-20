@@ -4,19 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {splitIntoWords} from "./01-hello-tests/01";
-import lesson11_3 from "./Promises/lessons11NJ";
+import lesson12NJS from "./Promises/lessons12NJS";
 
-const sentense =  "Hello my friends!"
+const sentense = "Hello my friends!"
 
 console.log(splitIntoWords(sentense))
 
-lesson11_3();
-
+// lesson11_3();
+lesson12NJS()
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
