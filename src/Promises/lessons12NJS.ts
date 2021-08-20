@@ -107,6 +107,34 @@ const lesson12NJS = () => {
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
 
+    let promise6 = new Promise((res, rej) => {
+        setTimeout(() => {
+            res("My name is");
+        }, 1000)
+    });
+
+    const onSuccess = (param: string) => {
+        return param + " Anton";
+    }
+
+    const print = (param: string) => {
+        console.log(param)
+    }
+
+    // promise6
+    // .then(res => {
+    //     //@ts-ignore
+    //     return onSuccess(res)
+    // })
+    // .then(res => {
+    //     print(res);
+    // })
+
+    promise6
+        //@ts-ignore
+        .then(onSuccess)
+        .then(print)
+
 
 // Task 7
 // Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
