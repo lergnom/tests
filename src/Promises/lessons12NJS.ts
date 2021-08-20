@@ -15,14 +15,17 @@ const lesson12NJS = () => {
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
-    let promise2 = Promise.resolve(
-        console.log('Promise data')
-    )
-    console.log("Promise2", promise2)
+    let promise2 = Promise.resolve("Promise data").then(res => console.log(res));
+    //     console.log('Promise data')
+    // )
+    console.log("Task 02: ", promise2)
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+
+    let promise3 = Promise.reject("Promise Error")
+    console.log("Task 03: ", promise3)
 
 
 // Task 04
@@ -31,6 +34,15 @@ const lesson12NJS = () => {
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+    let promise4 = new Promise((res, rej) => {
+        setTimeout(() => {
+            res("Promise Data")
+        }, 3000)
+    }).then(res => {
+        console.log(res)
+    })
+
+    console.log("Task 04: ", promise4)
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
@@ -44,6 +56,48 @@ const lesson12NJS = () => {
 // описаного выше объекта: свойство promise получает новый созданный промис,
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
+
+    type testObjType = {
+        promise: null | Promise<any>;
+        resolve: null | Function;
+        reject: null | Function;
+        onSuccess: (paramName: string) => void;
+        onError: (paramName: string) => void;
+    }
+
+    const handlePromise: testObjType = {
+        promise: null,
+        resolve: null,
+        reject: null,
+        onSuccess: (paramName: string) => (console.log(`Promise is resolved with data: ${paramName}`)),
+        onError: (paramName: string) => (console.log(`Promise is rejected with error: ${paramName}`)),
+    }
+
+    const createPromise = () => {
+
+        const somePromise: Promise<any> = new Promise((res, rej) => {
+            handlePromise.resolve = res;
+            handlePromise.reject = rej;
+        });
+
+        handlePromise.promise = somePromise;
+
+        handlePromise.promise
+            .then(res => handlePromise.onSuccess(res))
+            //.then(handlePromise.onSuccess)
+            .catch(err => handlePromise.onError(err))
+        //.catch(handlePromise.onError)
+        //@ts-ignore
+        window.prom = handlePromise;
+    }
+    const resolvePromise = () => {
+        handlePromise.resolve && handlePromise.resolve('1');
+
+    }
+    const rejectPromise = () => {
+        handlePromise.reject && handlePromise.reject('0');
+
+    }
 
 
 // Task 06
