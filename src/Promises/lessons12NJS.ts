@@ -107,7 +107,7 @@ const lesson12NJS = () => {
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
 
-    let promise6 = new Promise((res, rej) => {
+    const promise6 = new Promise((res, rej) => {
         setTimeout(() => {
             res("My name is");
         }, 1000)
@@ -141,6 +141,58 @@ const lesson12NJS = () => {
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
+    const promise7_1 = new Promise((res, rej) => {
+        setInterval(() => {
+            res({name: "Anna"});
+        }, 2000)
+    });
+
+    const promise7_2 = new Promise((res, rej) => {
+        setInterval(() => {
+            res({age: 16});
+        }, 3000)
+    });
+
+    const promise7_3 = new Promise((res, rej) => {
+        setInterval(() => {
+            res({city: 'Pskov'});
+        }, 4000)
+    });
+
+    // promise7_1.then(console.log)
+    // promise7_2.then(console.log)
+    // promise7_3.then(console.log)
+
+    const allPromise = Promise.allSettled([promise7_1, promise7_2, promise7_3])
+
+    allPromise.then((result) => {
+            // let myObj = {};
+            // result.forEach(pr => {
+            //
+            //     //@ts-ignore
+            //     console.log(pr.value)
+            //     //@ts-ignore
+            //     // myObj.pr.value[0] = pr.value;
+            // })
+            // console.log("MyObj", myObj)
+            //@ts-ignore
+            // console.log(result[0].value.name);
+            //@ts-ignore
+            const name = result[0].value.name;
+            //@ts-ignore
+            // console.log(result[1].value.age);
+            //@ts-ignore
+            const age = result[1].value.age;
+            //@ts-ignore
+            // console.log(result[2].value.city);
+            //@ts-ignore
+            const city = result[2].value.city;
+            //@ts-ignore
+            return {name, age, city}
+        }
+    )
+        .then(console.log)
+
 
 }
 
