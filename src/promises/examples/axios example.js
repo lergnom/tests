@@ -35,7 +35,12 @@ const axios = {
 
 const promise1 = axios.get('https://google.com/')
 
-promise1.then((data)=>{
+promise1.then((data) => {
     console.log(data.data)
     console.log(data.data)
+    return data.data
+})
+
+promise1.then(data => {
+    console.log(data)
 })

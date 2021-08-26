@@ -166,15 +166,15 @@ const lesson12NJS = () => {
     const allPromise = Promise.allSettled([promise7_1, promise7_2, promise7_3])
 
     allPromise.then((result) => {
-            // let myObj = {};
-            // result.forEach(pr => {
-            //
-            //     //@ts-ignore
-            //     console.log(pr.value)
-            //     //@ts-ignore
-            //     // myObj.pr.value[0] = pr.value;
-            // })
-            // console.log("MyObj", myObj)
+            //@ts-ignore
+            let myObj = {}
+            result.forEach(pr => {
+                //@ts-ignore
+                // console.log(Object.values(pr.value)[0])
+                //@ts-ignore
+                myObj[Object.keys(pr.value)] = Object.values(pr.value)[0];
+            })
+            console.log("MyObj", myObj)
             //@ts-ignore
             // console.log(result[0].value.name);
             //@ts-ignore
