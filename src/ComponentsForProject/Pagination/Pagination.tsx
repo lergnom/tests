@@ -30,17 +30,6 @@ export const Pagination = ({totalCount, count, page, onChangePage, acc = 10}: Pa
 
     return (
         <>
-            {/*<p>Paginations: </p>*/}
-            {/*<div className={s.pagination}>*/}
-            {/*    {pages.map(p => {*/}
-            {/*        return <span onClick={() => {*/}
-            {/*            onChangePage(p);*/}
-            {/*        }} className={page === p ? s.selectedPage : ''}>{p}</span>;*/}
-            {/*    })*/}
-            {/*    }*/}
-            {/*</div>*/}
-
-
             <div className={s.paginationWrapper}>
                 <ul className={s.pagination}>
                     <li>
