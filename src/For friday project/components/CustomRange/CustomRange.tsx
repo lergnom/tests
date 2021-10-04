@@ -9,7 +9,6 @@ type SuperDoubleRangePropsType = {
 }
 
 const CustomRange: React.FC<SuperDoubleRangePropsType> = ({getMin, getMax, width = 100}) => {
-
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(width - 10);
     const [minPoint, setMinPoint] = useState<number>(0);
@@ -20,6 +19,7 @@ const CustomRange: React.FC<SuperDoubleRangePropsType> = ({getMin, getMax, width
 
     const [minEnabled, setMinEnabled] = useState<boolean>(false);
     const [maxEnabled, setMaxEnabled] = useState<boolean>(false);
+
 
     const mouseMoveHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.currentTarget.id === 'min') {
@@ -50,11 +50,15 @@ const CustomRange: React.FC<SuperDoubleRangePropsType> = ({getMin, getMax, width
         e.currentTarget.id === 'max' && setMaxEnabled(true);
     };
     const mouseUpHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.currentTarget.id === 'min' && setMinEnabled(false);
-        e.currentTarget.id === 'max' && setMaxEnabled(false);
+        if (e.currentTarget.id === 'min') {
+            setMinEnabled(false);
+            getMin(minVal);
+        }
+        if (e.currentTarget.id === 'max') {
+            setMaxEnabled(false);
+            getMax(maxVal);
+        }
     };
-
-
 
     const setValueMin = () => {
         setEditMin(false);
@@ -64,10 +68,6 @@ const CustomRange: React.FC<SuperDoubleRangePropsType> = ({getMin, getMax, width
         setEdit(false);
         setMax(maxVal);
     };
-
-
-    getMin(minVal);
-    getMax(maxVal);
 
 
     return (
